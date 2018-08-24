@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jaon.demo.mapper.SysMenuMapper">
+    <resultMap id="BaseResultMap" type="SysMenu">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="parent_id" jdbcType="BIGINT" property="parentId" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="url" jdbcType="VARCHAR" property="url" />
+        <result column="perm" jdbcType="LONGVARCHAR" property="perm" />
+        <result column="icon" jdbcType="VARCHAR" property="icon" />
+        <result column="order_num" jdbcType="INTEGER" property="orderNum" />
+        <result column="creator" jdbcType="BIGINT" property="creator" />
+        <result column="creation_time" jdbcType="TIMESTAMP" property="creationTime" />
+        <result column="menu_type" jdbcType="INTEGER" property="menuType" />
+    </resultMap>
+    <sql  id="BaseColumnList">
+        id,
+        parent_id,
+        `name`,
+        url,
+        perm,
+        icon,
+        order_num,
+        creator,
+        creation_time,
+        menu_type
+    </sql>
+    <sql id="ConditionSql">
+        <where>
+            <if test="id != null and id != '' "> and id = #{id}</if>
+            <if test="parentId != null and parentId != '' "> and parent_id = #{parentId}</if>
+            <if test="name != null and name != '' "> and `name` = #{name}</if>
+            <if test="url != null and url != '' "> and url = #{url}</if>
+            <if test="perm != null and perm != '' "> and perm = #{perm}</if>
+            <if test="icon != null and icon != '' "> and icon = #{icon}</if>
+            <if test="orderNum != null and orderNum != '' "> and order_num = #{orderNum}</if>
+            <if test="creator != null and creator != '' "> and creator = #{creator}</if>
+            <if test="creationTime != null and creationTime != '' "> and creation_time = #{creationTime}</if>
+        </where>
+    </sql>
+
+
+    <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumnList" />
+        from sys_menu
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteById" parameterType="java.lang.Long" >
+        delete from sys_menu
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <insert id="insert" parameterType="SysMenu" useGeneratedKeys="true" keyProperty="id" >
+        insert into sys_menu (
+            id,
+            parent_id,`name`,
+            url,perm,
+            icon,order_num,
+            creator,creation_time,
+            menu_type)
+        values (#{id,jdbcType=BIGINT},
+                #{parentId,jdbcType=BIGINT},#{name,jdbcType=VARCHAR},
+                #{url,jdbcType=VARCHAR},#{perm,jdbcType=LONGVARCHAR},
+                #{icon,jdbcType=VARCHAR},#{orderNum,jdbcType=INTEGER},
+                #{creator,jdbcType=BIGINT},#{creationTime,jdbcType=TIMESTAMP},
+                #{menuType,jdbcType=INTEGER})
+    </insert>
+
+    <update id="update" parameterType="SysMenu">
+        update sys_menu
+        set id = #{id,jdbcType=BIGINT},
+            parent_id = #{parentId,jdbcType=BIGINT},
+            `name` = #{name,jdbcType=VARCHAR},
+            url = #{url,jdbcType=VARCHAR},
+            perm = #{perm,jdbcType=LONGVARCHAR},
+            icon = #{icon,jdbcType=VARCHAR},
+            order_num = #{orderNum,jdbcType=INTEGER},
+            creator = #{creator,jdbcType=BIGINT},
+            creation_time = #{creationTime,jdbcType=TIMESTAMP},
+            menu_type = #{menuType,jdbcType=INTEGER}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <select id="selectOneByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumnList" />
+        from sys_menu
+        <include refid="ConditionSql" />
+        limit 1
+    </select>
+
+    <select id="selectListByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumnList" />
+        from sys_menu
+        <include refid="ConditionSql" />
+    </select>
+
+    <select id="countByParams" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select
+        count(1)
+        from sys_menu
+        <include refid="ConditionSql" />
+    </select>
+    <select id="selectPageByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumnList" />
+        from sys_menu
+        <include refid="ConditionSql" />
+        limit #{pageNow},#{pageSize}
+    </select>
+
+</mapper>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-cn" aria-hidden="true" data-backdrop="static">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <META HTTP-EQUIV="Window-target" CONTENT="_top">
+    <META NAME="keywords" CONTENT="MINI后台管理">
+    <META NAME="description" CONTENT="MINI后台管理，最完美的体验，功能完善中">
+
+    <title>MINI后台管理</title>
+
+    <link href="assets/js/zui/css/zui.css" rel="stylesheet">
+    <link id="link-theme" href="assets/js/zui/css/theme/zui-theme.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet">
+    <style id="themeStyle"></style>
+
+    <link async="async" href="assets/js/zui/lib/datatable/zui.datatable.css" rel="stylesheet">
+    <link async="async" href="assets/js/plugins/toastr/toastr.min.css" rel="stylesheet">
+    <link async="async" href="assets/js/plugins/iosOverlay/iosOverlay.css" rel="stylesheet">
+    <link async="async" href="assets/js/plugins/bootgrid/jquery.bootgrid.css" rel="stylesheet">
+    <!--<link rel="shortcut icon" href="docs/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="docs/favicon.ico" type="image/x-icon">-->
+
+    <!--[if lt IE 9]>
+      <script src="assets/js/plugins/html5shiv.js"></script>
+      <script src="assets/js/plugins/respond.js"></script>
+      <script src="assets/js/plugins/excanvas.js"></script>
+    <![endif]-->
+<style>
+.pro_name a{color: #4183c4;}
+.osc_git_title{background-color: #fff;}
+.osc_git_box{background-color: #fff;}
+.osc_git_box{border-color: #E3E9ED;}
+.osc_git_info{color: #666;}
+.osc_git_main a{color: #9B9B9B;}
+</style>
+</head>
+
+<body>
+    <div id="preview-loading" style="height:100%;">
+        <p style="height:30%;">
+            <h1 class="text-center">Minimal-Admin Power By <a href="wwww.fcode.me">fcode.me</a></h1>
+            <h1 class="text-center">loading files <i class="icon icon-spin icon-4x icon-spinner"></i></h1>
+    </div>
+    <script src="assets/js/require.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script>
+        var madmin={};
+        require(["dashboard"]);
+    </script>
+</body>
+
+</html>

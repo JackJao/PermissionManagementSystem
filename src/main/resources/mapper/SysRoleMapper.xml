@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jaon.demo.mapper.SysRoleMapper">
+
+    <resultMap id="BaseResultMap" type="SysRole">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="remark" jdbcType="VARCHAR" property="remark" />
+        <result column="dept_id" jdbcType="BIGINT" property="deptId" />
+        <result column="creator" jdbcType="BIGINT" property="creator" />
+        <result column="creation_time" jdbcType="TIMESTAMP" property="creationTime" />
+    </resultMap>
+    <sql  id="BaseColumnList">
+        id,
+        `name`,
+        remark,
+        dept_id,
+        creator,
+        creation_time
+    </sql>
+    <sql id="ConditionSql">
+        <where>
+            <if test="id != null and id != '' "> and id = #{id}</if>
+            <if test="name != null and name != '' "> and name = #{name}</if>
+            <if test="remark != null and remark != '' "> and remark = #{remark}</if>
+            <if test="deptId != null and deptId != '' "> and dept_id = #{deptId}</if>
+            <if test="creator != null and creator != '' "> and creator = #{creator}</if>
+            <if test="creationTime != null and creationTime != '' "> and creation_time = #{creationTime}</if>
+        </where>
+    </sql>
+    <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumnList" />
+        from sys_role
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteById" parameterType="java.lang.Long" >
+        delete from sys_role
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <insert id="insert" parameterType="SysRole" useGeneratedKeys="true" keyProperty="id" >
+        insert into sys_role (
+        id,
+        `name`,remark,
+        dept_id,creator,
+        creation_time)
+        values (#{id,jdbcType=BIGINT},
+        #{name,jdbcType=VARCHAR},#{remark,jdbcType=VARCHAR},
+        #{deptId,jdbcType=BIGINT},#{creator,jdbcType=BIGINT},
+        #{creationTime,jdbcType=TIMESTAMP})
+    </insert>
+
+    <update id="update" parameterType="SysRole">
+        update sys_role
+        set
+        id = #{id,jdbcType=BIGINT},
+        `name` = #{name,jdbcType=VARCHAR},
+        remark = #{remark,jdbcType=VARCHAR},
+        dept_id = #{deptId,jdbcType=BIGINT},
+        creator = #{creator,jdbcType=BIGINT},
+        creation_time = #{creationTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <select id="selectOneByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumnList" />
+        from sys_role
+        <include refid="ConditionSql" />
+        limit 1
+    </select>
+    <select id="selectListByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumnList" />
+        from sys_role
+        <include refid="ConditionSql" />
+    </select>
+    <select id="countByParams" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select
+        count(1)
+        from sys_role
+        <include refid="ConditionSql" />
+    </select>
+    <select id="selectPageByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumnList" />
+        from sys_role
+        <include refid="ConditionSql" />
+        limit #{pageNow},#{pageSize}
+    </select>
+</mapper>

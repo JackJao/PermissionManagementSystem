@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <META NAME="keywords" CONTENT="MINI后台管理">
+    <META NAME="description" CONTENT="MINI后台管理完善中">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <link href="assets/js/zui/css/zui.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/uniform.default.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/animate.min.css">
+    <link async="async" href="assets/js/plugins/iosOverlay/iosOverlay.css" rel="stylesheet">
+    <link async="async" href="assets/js/plugins/toastr/toastr.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/login.css">
+    <style type="text/css"></style>
+</head>
+
+<body class="login">
+    <!-- PAGE -->
+    <section id="page">
+        <!-- HEADER -->
+        <header>
+            <!-- NAV-BAR -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <div id="logo">
+                            <a href="https://www.baidu.com"><img src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1534406603&di=fa4f9a0e8a2a3637795c361e57a21758&src=http://att2.citysbs.com/hangzhou/2016/06/23/20/middle_476x241-200234_v2_11731466683354002_17c1ff92b84abd531e7b01778d14987d.png" height="40" alt="logo name"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/NAV-BAR -->
+        </header>
+        <!--/HEADER -->
+        <!-- LOGIN -->
+        <section id="login" class="visible">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="login-box-plain">
+                            <h2 class="bigintro">MINI后台管理</h2>
+                            <div class="divide-40"></div>
+                            <form role="form">
+                                <div class="form-group">
+                                    <label for="user">账号</label>
+                                    <i class="icon icon-user"></i>
+                                    <input type="text" class="form-control" id="user">
+                                </div>
+                                <div class="form-group">
+                                    <label for="pwd">密码</label>
+                                    <i class="icon icon-lock"></i>
+                                        <input type="password" class="form-control" id="pwd" autocomplete="on">
+                                </div>
+                                <div class="form-actions">
+                                    <label class="checkbox">
+                                        <div class="checker"><span><div class="checker" id="uniform-remember"><span class="checked"><input type="checkbox" id="remember" class="uniform" value="" checked="checked"></span></div></span></div> 记住我</label>
+                                    <button type="button" class="btn btn-danger" id="submit-login">登 &nbsp; 录</button>
+                                </div>
+                            </form>
+                            <div class="login-helpers">
+                                <a href="#" onclick="javascript:madmin.tool.swapScreen(&#39;forgot&#39;);return false;">忘记密码?</a>
+                                <br> 没有账户？ <a href="#" onclick="javascript:madmin.tool.swapScreen(&#39;register&#39;);return false;">马上注册</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--/LOGIN -->
+        <!-- REGISTER -->
+        <section id="register">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="login-box-plain">
+                            <h2 class="bigintro">注册</h2>
+                            <div class="divide-40"></div>
+                            <form role="form">
+                                <div class="form-group">
+                                    <label for="exampleInputName">姓名</label>
+                                    <i class="icon icon-font"></i>
+                                    <input type="text" class="form-control" id="exampleInputName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputUsername">登录名</label>
+                                    <i class="icon icon-user"></i>
+                                    <input type="text" class="form-control" id="exampleInputUsername">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">电子邮箱</label>
+                                    <i class="icon icon-envelope"></i>
+                                    <input type="email" class="form-control" id="exampleInputEmail1">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">密码</label>
+                                    <i class="icon icon-lock"></i>
+                                    <input type="password" class="form-control" id="exampleInputPassword1" autocomplete="on">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword2">重复密码</label>
+                                    <i class="icon icon-checked"></i>
+                                    <input type="password" class="form-control" id="exampleInputPassword2" autocomplete="on">
+                                </div>
+                                <div class="form-actions">
+                                    <label class="checkbox">
+                                        <div class="checker"><span><div class="checker"><span><input type="checkbox" class="uniform" value=""></span></div></span></div> 我同意
+                                        <a href="#">服务条例</a> 和 <a href="#">隐私条例</a></label>
+                                    <button type="submit" class="btn btn-success">提交注册</button>
+                                </div>
+                            </form>
+
+                            <div class="login-helpers">
+                                <a href="#" onclick="javascript:madmin.tool.swapScreen(&#39;login&#39;);return false;"> 返回登录</a>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--/REGISTER -->
+        <!-- FORGOT PASSWORD -->
+        <section id="forgot">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="login-box-plain">
+                            <h2 class="bigintro">重置密码</h2>
+                            <div class="divide-40"></div>
+                            <form role="form">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail12">电子邮箱</label>
+                                    <i class="icon icon-envelope"></i>
+                                    <input type="email" class="form-control" id="exampleInputEmail12">
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-info">发送邮件</button>
+                                </div>
+                            </form>
+                            <div class="login-helpers">
+                                <a href="#" onclick="javascript:madmin.tool.swapScreen(&#39;login&#39;);return false;">返回登录</a>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- FORGOT PASSWORD -->
+    </section>
+
+    <script src="assets/js/require.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script>
+        var madmin={};
+        require(["login"]);
+    </script>
+</body>
+
+</html>

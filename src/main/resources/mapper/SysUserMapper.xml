@@ -17,14 +17,15 @@
     <sql  id="BaseColumnList">
         id,
         username,
-        password,
+        `password`,
         salt,
         email,
         mobile,
-        status,
+        `status`,
         dept_id,
         creator,
-        creation_time
+        creation_time,
+        birthday
     </sql>
     <sql id="ConditionSql"><where>
         <if test="id != null and id != '' "> and id = #{id}</if>

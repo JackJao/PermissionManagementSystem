@@ -1,8 +1,6 @@
 package com;
 
-import com.alibaba.fastjson.JSON;
 import com.jaon.demo.config.RedisConfig;
-import com.jaon.demo.domain.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,7 +12,6 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -69,19 +66,19 @@ public class RedisTest {
 
     @Test
     public void test4(){
-        User u = new User();
-        u.setId(1L);
-        u.setPassword("10010");
-        u.setUsername("联通");
-        u.setBirthday(new Date());
-        u.setCreaterTime(new Date());
+//        User u = new User();
+//        u.setId(1L);
+//        u.setPassword("10010");
+//        u.setUsername("联通");
+//        u.setBirthday(new Date());
+//        u.setCreaterTime(new Date());
         /*redisTemplate.setKeySerializer(new StringRedisSerializer());
         redisTemplate.setValueSerializer(new FastJsonRedisSerializer<User>(User.class));
         redisTemplate.opsForValue().set("123",u);*/
-        String s = JSON.toJSONString(u);
-        stringRedisTemplate.opsForValue().set("1232",s);
-        Object o = stringRedisTemplate.opsForValue().get("1232");
-        System.out.println("user = "+o);
+//        String s = JSON.toJSONString(u);
+//        stringRedisTemplate.opsForValue().set("1232",s);
+//        Object o = stringRedisTemplate.opsForValue().get("1232");
+//        System.out.println("user = "+o);
     }
 
    /* @Resource

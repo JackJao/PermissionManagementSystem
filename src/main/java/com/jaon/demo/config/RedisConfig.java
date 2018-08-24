@@ -1,7 +1,5 @@
 package com.jaon.demo.config;
 
-import com.alibaba.fastjson.support.spring.FastJsonRedisSerializer;
-import com.jaon.demo.domain.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -13,8 +11,6 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
-
-import java.io.Serializable;
 
 /**
  * @author Gao

@@ -54,6 +54,16 @@ public class SysUser implements Serializable {
 	 */
 	private Date creationTime;
 
+	private Date birthday;
+
+	public Date getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
+
 	/**
 	 * 设置：用户id
 	 */

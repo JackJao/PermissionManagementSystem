@@ -1,9 +1,10 @@
 package com.jaon.demo.config;
 
-import com.jaon.demo.component.shiro.RedisShiroSessionDAO;
 import com.jaon.demo.component.shiro.UserRealm;
 import org.apache.shiro.mgt.SecurityManager;
+import org.apache.shiro.session.SessionListener;
 import org.apache.shiro.session.mgt.SessionManager;
+import org.apache.shiro.session.mgt.eis.SessionDAO;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -14,7 +15,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,7 +30,8 @@ import java.util.Map;
 public class ShiroConfig {
 
     @Bean("sessionManager")
-    public SessionManager sessionManager(RedisShiroSessionDAO redisShiroSessionDAO,
+    public SessionManager sessionManager(SessionDAO sessionDAO,
+                                         SessionListener sessionListener,
                                          @Value("${demo.redis.open}") boolean redisOpen,
                                          @Value("${demo.shiro.redis}") boolean shiroRedis){
         DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();
@@ -35,10 +39,13 @@ public class ShiroConfig {
         sessionManager.setGlobalSessionTimeout(60 * 60 * 1000);
         sessionManager.setSessionValidationSchedulerEnabled(true);
         sessionManager.setSessionIdUrlRewritingEnabled(false);
-
+        //添加session监听器
+        List<SessionListener> listenerList = new ArrayList<SessionListener>(1);
+        listenerList.add(sessionListener);
+        sessionManager.setSessionListeners(listenerList);
         //如果开启redis缓存且demo.shiro.redis=true，则shiro session存到redis里
         if(redisOpen && shiroRedis){
-            sessionManager.setSessionDAO(redisShiroSessionDAO);
+            sessionManager.setSessionDAO(sessionDAO);
         }
         return sessionManager;
     }
@@ -71,7 +78,7 @@ public class ShiroConfig {
         filterMap.put("/assets/**", "anon");
         filterMap.put("/favicon.ico", "anon");
         filterMap.put("/captcha.jpg", "anon");
-        filterMap.put("/***", "authc");
+        filterMap.put("/**", "authc");
         shiroFilter.setFilterChainDefinitionMap(filterMap);
 
         return shiroFilter;
